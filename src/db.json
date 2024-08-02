@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "815e",
+      "name": "vaibhavi",
+      "phoneNo": "1234",
+      "country": "India",
+      "email": "v@gmail.com",
+      "gender": "female"
+    }
+  ],
+  "country": [
+    {
+      "id": "1",
+      "name": "India"
+    },
+    {
+      "id": "2",
+      "name": "America"
+    },
+    {
+      "id": "3",
+      "name": "Japan"
+    },
+    {
+      "id": "4",
+      "name": "Dubai"
+    },
+    {
+      "id": "5",
+      "name": "Chennai"
+    },
+    {
+      "id": "6",
+      "name": "Pakistan"
+    },
+    {
+      "id": "7",
+      "name": "Shrilanka"
+    }
+  ]
+}
