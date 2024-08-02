@@ -5,7 +5,8 @@ import API_URL from "./API_URL";
 import useFetch from "./useFetch";
 
 function AddUser() {
-  let [country, setCountry] = useState([]);
+  let [country] = useFetch(API_URL.countryAPI);
+  console.log(country)
   let [users, setUsers] = useState({
     name: "",
     phoneNo: "",
@@ -15,21 +16,6 @@ function AddUser() {
   });
   let navigate = useNavigate();
   let params = useParams();
-
-  function getCountry() {
-    axios
-      .get(API_URL.countryAPI)
-      .then((res) => {
-        setCountry(res.data);
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
-  }
-
-  useEffect(() => {
-    getCountry();
-  }, []);
 
   useEffect(() => {
     if (params.id) {
@@ -54,19 +40,17 @@ function AddUser() {
       users.phoneNo === ""
     ) {
       alert("Please enter the details....");
-    }
-else{
+    } else {
       if (params?.id) {
-      axios({
-        method: "PUT",
-        url: API_URL.userAPI + "/" + params?.id,
-        data: users,
-      }).then((res) => {
-        alert("User update successfully");
-        navigate("/");
-      });
-    }     
-       else {
+        axios({
+          method: "PUT",
+          url: API_URL.userAPI + "/" + params?.id,
+          data: users,
+        }).then((res) => {
+          alert("User update successfully");
+          navigate("/");
+        });
+      } else {
         axios({
           method: "POST",
           url: API_URL.userAPI,
@@ -116,8 +100,8 @@ else{
             <option value="" disabled>
               select
             </option>
-            {country.map((e) => (
-              <option value={e.name}>{e.name}</option>
+            {country?.map((e) => (
+              <option value={e?.name}>{e?.name}</option>
             ))}
           </select>
         </div>
