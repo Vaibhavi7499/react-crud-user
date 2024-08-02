@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
   let [users, setUsers] = useState([]);
-let navigate =  useNavigate();
+  let navigate = useNavigate();
+  let [inpt, setInput] = useState("");
 
   function getUserData() {
     axios
@@ -22,23 +23,39 @@ let navigate =  useNavigate();
     getUserData();
   }, []);
 
-  let deleteUser=(id)=>{
-axios({
-  method : "DELETE",
-  url :API_URL.userAPI+"/"+id,
-}).then((r)=>{
-  getUserData();
-}).catch((err)=>{
-  console.log(err);
-})
-  }
+  let deleteUser = (id) => {
+    axios({
+      method: "DELETE",
+      url: API_URL.userAPI + "/" + id,
+    })
+      .then((r) => {
+        getUserData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  let editUser=(obj)=>{
-navigate("/adduser/"+obj.id);
-  }
+  let editUser = (obj) => {
+    navigate("/adduser/" + obj.id);
+  };
 
-  let viewUser=(id)=>{
-navigate("/viewuser/"+id);
+  let viewUser = (id) => {
+    navigate("/viewuser/" + id);
+  };
+
+  function getInptValue(e) {
+    if (e.target.value === "") {
+      getUserData();
+      setInput("");
+    } else {
+      setInput(e.target.value);
+      let a = users.filter((e) => {
+        return e.name.toLowerCase().includes(inpt.toLowerCase());
+      });
+
+      setUsers(a);
+    }
   }
 
   return (
@@ -46,10 +63,13 @@ navigate("/viewuser/"+id);
       <div class="row mb-3">
         <div class="col-md-6">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." />
-            <button class="btn btn-primary" type="button">
-              Search
-            </button>
+            <input
+              type="text"
+              class="form-control"
+              value={inpt}
+              placeholder="Search by name"
+              onChange={(e) => getInptValue(e)}
+            />
           </div>
         </div>
       </div>
@@ -74,9 +94,22 @@ navigate("/viewuser/"+id);
               <td>{e.country}</td>
               <td>{e.email}</td>
               <td>{e.gender}</td>
-              <td><button className="btn btn-success" onClick={()=>viewUser(e?.id)}>View</button>{" "}
-                <button className="btn btn-info" onClick={()=>editUser(e)}>Edit</button>{" "}
-                <button className="btn btn-danger" onClick={()=>deleteUser(e?.id)}>Delete</button>
+              <td>
+                <button
+                  className="btn btn-success"
+                  onClick={() => viewUser(e?.id)}
+                >
+                  View
+                </button>{" "}
+                <button className="btn btn-info" onClick={() => editUser(e)}>
+                  Edit
+                </button>{" "}
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteUser(e?.id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

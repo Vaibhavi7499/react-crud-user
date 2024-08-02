@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useFetch = (url) => {
-    let [usefetchUrl,setUseFetchUrl] = useState("");
-
+    let [usefetchUrl,setUseFetchUrl] = useState([]);
+console.log(url)
     useEffect(()=>{
         axios
         .get(url)
@@ -13,7 +13,7 @@ const useFetch = (url) => {
         .catch((err) => {
           console.warn(err);
         })
-    },[])
+    },[url])
     
 
     return [usefetchUrl];
