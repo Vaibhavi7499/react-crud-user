@@ -15,14 +15,6 @@
       "country": "Shrilanka",
       "email": "vaish@gmail.com",
       "gender": "female"
-    },
-    {
-      "id": "7321",
-      "name": "kish",
-      "phoneNo": "9049",
-      "country": "Pakistan",
-      "email": "k@gmail.com",
-      "gender": "male"
     }
   ],
   "country": [
@@ -53,6 +45,24 @@
     {
       "id": "7",
       "name": "Shrilanka"
+    }
+  ],
+  "employee": [
+    {
+      "id": "2b12",
+      "name": "vaibhavi",
+      "phoneNo": "7499450359",
+      "country": "America",
+      "email": "v@gmail.com",
+      "gender": "female"
+    },
+    {
+      "name": "kishor",
+      "phoneNo": "123456",
+      "country": "Chennai",
+      "email": "ki@g",
+      "gender": "male",
+      "id": "520e"
     }
   ]
 }

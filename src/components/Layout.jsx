@@ -1,12 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Layout() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
+  let location = useLocation();
 
-    let navigateToAddUser=()=>{
-        navigate("/adduser");
+  let navigateToPath = () => {
+    if (location?.pathname === "/emphome") {
+      navigate("/addemp");
+    } else {
+      navigate("/adduser");
     }
+  };
 
   return (
     <div className="col-md-12">
@@ -15,22 +20,31 @@ function Layout() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link navbar-brand" to="/">React Crud User</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/">
-                  Home
+                <Link className="nav-link navbar-brand" to="/">
+                  React Crud User
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/about">
-                  About
+                <Link className="nav-link active" to="/">
+                  User Home
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link active" to="/emphome">
+                  Employee Home
                 </Link>
               </li>
             </ul>
           </div>
           <div className="col-md-2">
-            <button className="btn btn-primary" onClick={navigateToAddUser}>Add User</button>
+            <button className="btn btn-primary" onClick={navigateToPath}>
+              {location?.pathname === "/emphome"
+                ? "Add Employee"
+                : location?.pathname === "/"
+                ? "Add User"
+                : ""}
+            </button>
           </div>
         </div>
       </nav>
