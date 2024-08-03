@@ -54,5 +54,31 @@
       "id": "7",
       "name": "Shrilanka"
     }
+  ],
+  "employee": [
+    {
+      "id": "2b12",
+      "name": "vaibhavi",
+      "phoneNo": "7499450359",
+      "country": "America",
+      "email": "v@gmail.com",
+      "gender": "female"
+    },
+    {
+      "id": "53f6",
+      "name": "kishor",
+      "phoneNo": "9049416941",
+      "country": "Chennai",
+      "email": "k@gmail.com",
+      "gender": "male"
+    },
+    {
+      "id": "c45d",
+      "name": "Vaishnavi",
+      "phoneNo": "123456",
+      "country": "Chennai",
+      "email": "vaishnavi@gmail.com",
+      "gender": "female"
+    }
   ]
 }

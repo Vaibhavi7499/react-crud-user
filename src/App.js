@@ -5,6 +5,9 @@ import Home from './components/Home';
 import About from './components/About';
 import AddUser from './components/AddUser';
 import ViewUser from './components/ViewUser';
+import AddEmp from './employeeComponent/AddEmp';
+import HomeEmp from './employeeComponent/HomeEmp';
+import ViewEmp from './employeeComponent/ViewEmp';
 
 function App() {
   return (
@@ -12,11 +15,15 @@ function App() {
      <BrowserRouter>
      <Layout/>
      <Routes>
-      <Route path='/' element={<Home/>}/>
+      {/* <Route path='/' element={<Home/>}/> */}
       <Route path='/about' element={<About/>}/>
       <Route path='/adduser' element={<AddUser/>}/>
       <Route path='/adduser/:id' element={<AddUser/>}/>
       <Route path='/viewuser/:id' element={<ViewUser/>}/>
+      <Route path='/' element={<HomeEmp/>}/>
+      <Route path='/addemp' element={<AddEmp/>}/>
+      <Route path='/addemp/:id' element={<AddEmp/>}/>
+      <Route path='/viewemp/:id' element={<ViewEmp/>}/>
      </Routes>
      </BrowserRouter>
     </div>
