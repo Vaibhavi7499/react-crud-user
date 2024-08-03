@@ -50,10 +50,10 @@ const HomeEmp = () => {
       setInptValue("");
     } else {
       setInptValue(ele.target.value);
-      let a = emp.filter((e) => {
+      let empFilter = emp.filter((e) => {
         return e.name.toLowerCase().includes(inptValue.toLowerCase());
       });
-      setEmp(a);
+      setEmp(empFilter);
     }
   }
 

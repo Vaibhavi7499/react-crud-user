@@ -7,7 +7,6 @@ import useFetch from "./useFetchEmp";
 const AddEmp = () => {
   let navigate = useNavigate();
   let [country] = useFetch(API_URL.countryAPI);
-  console.log(country);
   let params = useParams();
 
   let [employee, setEmployee] = useState({
@@ -17,6 +16,28 @@ const AddEmp = () => {
     email: "",
     gender: "",
   });
+
+  function addEmp() {
+    axios({
+      method: "POST",
+      url: API_URL.employeeAPI,
+      data: employee,
+    }).then((res) => {
+      alert("Added employee successfully...");
+      navigate("/emphome");
+    });
+  }
+
+  function updateEmp() {
+    axios({
+      method: "PUT",
+      url: API_URL.employeeAPI + "/" + params?.id,
+      data: employee,
+    }).then((r) => {
+      alert("Updated employee successfully...");
+      navigate("/emphome");
+    });
+  }
 
   let addEmpData = () => {
     if (
@@ -29,23 +50,9 @@ const AddEmp = () => {
       alert("Please enter the details !!!");
     } else {
       if (params?.id) {
-        axios({
-          method: "PUT",
-          url: API_URL.employeeAPI + "/" + params?.id,
-          data: employee,
-        }).then((r) => {
-          alert("Update user successfully...");
-          navigate("/");
-        });
+        updateEmp();
       } else {
-        axios({
-          method: "POST",
-          url: API_URL.employeeAPI,
-          data: employee,
-        }).then((res) => {
-          alert("Added user successfully...");
-          navigate("/");
-        });
+        addEmp();
       }
     }
   };
@@ -101,7 +108,9 @@ const AddEmp = () => {
               select country
             </option>
             {country?.map((e) => (
-              <option value={e?.name}>{e?.name}</option>
+              <option value={e?.name} key={e?.id}>
+                {e?.name}
+              </option>
             ))}
           </select>
         </div>
@@ -125,7 +134,7 @@ const AddEmp = () => {
                 type="radio"
                 value="male"
                 checked={employee.gender === "male"}
-                onChange={(e) => setEmployee({ ...employee, gender: "male" })}
+                onClick={() => setEmployee({ ...employee, gender: "male" })}
               />
               <label class="form-check-label">Male</label>
             </div>
@@ -135,7 +144,7 @@ const AddEmp = () => {
                 type="radio"
                 value="female"
                 checked={employee.gender === "female"}
-                onChange={(e) => setEmployee({ ...employee, gender: "female" })}
+                onClick={() => setEmployee({ ...employee, gender: "female" })}
               />
               <label class="form-check-label">Female</label>
             </div>
@@ -143,7 +152,7 @@ const AddEmp = () => {
         </div>
         <div className="mt-3">
           <button className="btn btn-primary col-md-12" onClick={addEmpData}>
-            {params?.id ? "Update" : "Add"}Employee
+            {params?.id ? "Update" : "Add"} Employee
           </button>
         </div>
       </div>

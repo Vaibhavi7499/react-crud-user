@@ -10,7 +10,7 @@ const ViewEmp = () => {
   let [viewEmpData] = useFetch(API_URL.employeeAPI + "/" + params?.id);
 
   let backToHomePage = () => {
-    navigate("/");
+    navigate("/emphome");
   };
 
   return (
