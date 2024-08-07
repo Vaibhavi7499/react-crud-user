@@ -35,6 +35,11 @@ function Layout() {
                   Employee Home
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/course">
+                  Course
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-md-2">
