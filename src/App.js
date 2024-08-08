@@ -12,6 +12,8 @@ import CssPractise from "./components/CssPractise";
 import Course from "./components/Course";
 import List from "./components/List";
 import Search from "./components/Search";
+import NestedHome from "./components/NestedHome";
+import NestedAbout from "./components/NestedAbout";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
           <Route path="course" element={<Course />}>
             <Route path="search" element={<Search />}></Route>
             <Route path="list" element={<List />}></Route>
+          </Route>
+          <Route path="nestedhome" element={<NestedHome />}>
+            <Route path="nestedabout" element={<NestedAbout />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

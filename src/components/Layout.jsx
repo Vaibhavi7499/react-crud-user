@@ -40,6 +40,11 @@ function Layout() {
                   Course
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/nestedhome">
+                  Nested Home
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-md-2">
