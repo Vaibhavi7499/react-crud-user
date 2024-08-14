@@ -18,6 +18,9 @@ import React from "react";
 import Todo from "./Todo";
 import CssPractise from "./components/CssPractise";
 import { Suspense } from "react";
+import ExpenseForm from "./expenseTracker/ExpenseForm";
+import ExpenseList from "./expenseTracker/ExpenseList";
+import ExpensePrice from "./expenseTracker/ExpensePrice";
 
 let Home = React.lazy(() => import("./components/Home"));
 let About = React.lazy(() => import("./components/About"));
@@ -35,7 +38,7 @@ let NestedAbout = React.lazy(() => import("./components/NestedAbout"));
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Layout />
         <Suspense fallback={<div>Loading....</div>}>
           <Routes>
@@ -57,6 +60,13 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
+      </BrowserRouter> */}
+      <BrowserRouter>
+      <Layout/>
+      <Routes>
+        <Route path="/" element={<ExpenseForm/>}/>
+        
+      </Routes>
       </BrowserRouter>
     </div>
     // <CssPractise></CssPractise>
