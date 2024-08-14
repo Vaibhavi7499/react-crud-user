@@ -19,7 +19,7 @@ function Layout() {
         <div className="container-fluid col-md-10">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link navbar-brand" to="/">
                   React Crud User
                 </Link>
@@ -44,10 +44,16 @@ function Layout() {
                 <Link className="nav-link active" to="/nestedhome">
                   Nested Home
                 </Link>
+              </li> */}
+              <li className="nav-item">
+                <Link className="nav-link navbar-brand" to="/">
+                  ExpenseForm
+                </Link>
               </li>
+              
             </ul>
           </div>
-          <div className="col-md-2">
+          {/* <div className="col-md-2">
             <button className="btn btn-primary" onClick={navigateToPath}>
               {location?.pathname === "/emphome"
                 ? "Add Employee"
@@ -55,7 +61,7 @@ function Layout() {
                 ? "Add User"
                 : ""}
             </button>
-          </div>
+          </div> */}
         </div>
       </nav>
     </div>
