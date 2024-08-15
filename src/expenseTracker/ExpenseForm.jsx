@@ -1,30 +1,49 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import ExpenseList from "./ExpenseList";
 import ExpensePrice from "./ExpensePrice";
 
 const ExpenseForm = () => {
   let [itemName, setItemName] = useState("");
   let [itemAmount, setItemAmount] = useState("");
-  let [expense, setExpense] = useState([]);
+  let array = [];
+  let [expense, dispatch] = useReducer(reducer, array);
 
-  //console.log(itemName,itemAmount)
+  function reducer(state, action) {
+    switch (action.type) {
+      case "ADD_EXPENSE":
+        if (itemName === "" || itemAmount === "") {
+          alert("Please enter the datails....");
+        } else {
+          setItemName("");
+          setItemAmount("");
+          return [
+            ...state,
+            {
+              name: action?.payload?.itemName,
+              amount: action?.payload?.itemAmount,
+            },
+          ];
+        }
+
+      case "CLEAR_ITEM":
+        return (state = []);
+
+      default:
+        return state;
+    }
+  }
 
   let addItem = () => {
-    if (itemName === "" || itemAmount === "") {
-      alert("Please enter the datails....");
-    } else {
-      setExpense([...expense, { name: itemName, amount: itemAmount }]);
-      setItemName("");
-      setItemAmount("");
-    }
+    dispatch({
+      type: "ADD_EXPENSE",
+      payload: { itemName, itemAmount },
+    });
   };
-
-  //console.log(expense)
 
   let clearAll = () => {
-    setExpense([]);
+    dispatch({ type: "CLEAR_ITEM" });
   };
-  console.log("form");
+
   return (
     <div className="col-md-6 m-auto">
       <h1>Expense Tracker</h1>
